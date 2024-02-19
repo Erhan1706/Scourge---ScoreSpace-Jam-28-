@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://coc06jjeg1guu"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_b5g3u"]
+[ext_resource type="PackedScene" uid="uid://cpvakj0xxidw5" path="res://scenes/player.tscn" id="1_idqi2"]
+[ext_resource type="PackedScene" uid="uid://d2h5446s4sk5y" path="res://Ambiente/Ambient.tscn" id="2_qgijn"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_b5g3u")
+
+[node name="Map" parent="." instance=ExtResource("2_qgijn")]
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("1_idqi2")]
+metadata/_edit_lock_ = true
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-359, -73)
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(76, -306)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="BatTimer" type="Timer" parent="Enemies"]
+
+[connection signal="shoot" from="Player" to="." method="_on_player_shoot"]
+[connection signal="timeout" from="Enemies/BatTimer" to="." method="_on_bat_timer_timeout"]

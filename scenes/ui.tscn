@@ -1,0 +1,221 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8ys4py2pmoop"]
+
+[ext_resource type="Texture2D" uid="uid://b6xmogqmm1c0k" path="res://graphics/ui/heart_animated_1.png" id="1_h3b0p"]
+[ext_resource type="Script" path="res://scenes/ui.gd" id="1_ldowd"]
+[ext_resource type="FontFile" uid="uid://3hbpqdn84dg" path="res://graphics/ui/PixelifySans-VariableFont_wght.ttf" id="3_h5loc"]
+
+[sub_resource type="Animation" id="Animation_vlnei"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heart1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Heart2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Heart3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_kqkrm"]
+resource_name = "heart"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heart1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_lowwv"]
+resource_name = "heart2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heart2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_ao12l"]
+resource_name = "heart3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heart3:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vf7nr"]
+_data = {
+"RESET": SubResource("Animation_vlnei"),
+"heart1": SubResource("Animation_kqkrm"),
+"heart2": SubResource("Animation_lowwv"),
+"heart3": SubResource("Animation_ao12l")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_8vodi"]
+font = ExtResource("3_h5loc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_nr0wq"]
+line_spacing = 5.0
+font = ExtResource("3_h5loc")
+font_size = 40
+font_color = Color(1, 1, 1, 0.596078)
+outline_color = Color(1, 1, 1, 0.219608)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.211765)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t22vq"]
+font = ExtResource("3_h5loc")
+font_size = 40
+font_color = Color(1, 1, 1, 0.596078)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.211765)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ldowd")
+
+[node name="Health Bar" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.1
+anchor_bottom = 0.1
+scale = Vector2(2, 2)
+
+[node name="Heart1" type="Sprite2D" parent="Health Bar"]
+position = Vector2(0, 2)
+texture = ExtResource("1_h3b0p")
+hframes = 5
+
+[node name="Heart2" type="Sprite2D" parent="Health Bar"]
+position = Vector2(19, 2)
+texture = ExtResource("1_h3b0p")
+hframes = 5
+
+[node name="Heart3" type="Sprite2D" parent="Health Bar"]
+position = Vector2(38, 2)
+texture = ExtResource("1_h3b0p")
+hframes = 5
+
+[node name="HeartAnimationPlayer" type="AnimationPlayer" parent="Health Bar"]
+libraries = {
+"": SubResource("AnimationLibrary_vf7nr")
+}
+
+[node name="LevelProgress" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -60.32
+offset_top = -9.74402
+offset_right = -20.32
+offset_bottom = 9.25598
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="LevelProgress"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.387
+anchor_top = 0.312
+anchor_right = 1.387
+anchor_bottom = 0.312
+offset_left = -174.48
+offset_top = -3.928
+offset_right = 176.52
+offset_bottom = 7.072
+max_value = 15.0
+show_percentage = false
+
+[node name="Level" type="Label" parent="LevelProgress"]
+layout_mode = 0
+offset_left = 242.32
+offset_top = -3.45599
+offset_right = 282.32
+offset_bottom = 19.544
+text = "1"
+label_settings = SubResource("LabelSettings_8vodi")
+
+[node name="Score" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.85
+anchor_top = 0.07
+anchor_right = 0.9
+anchor_bottom = 0.75
+offset_left = 2.0
+offset_top = 3.4
+offset_right = 21.0
+offset_bottom = -597.0
+
+[node name="ScoreText" type="Label" parent="Score"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.443
+anchor_right = 0.617
+anchor_bottom = 0.343
+offset_left = 0.945004
+offset_top = -5.0
+offset_right = 1.045
+offset_bottom = -1.962
+text = "Score:"
+label_settings = SubResource("LabelSettings_nr0wq")
+
+[node name="ScoreNum" type="Label" parent="Score"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.296
+anchor_top = 0.015
+anchor_right = 0.774
+anchor_bottom = 0.198
+offset_left = 125.04
+offset_top = -6.01
+offset_right = 41.9901
+offset_bottom = 18.468
+text = "0"
+label_settings = SubResource("LabelSettings_t22vq")

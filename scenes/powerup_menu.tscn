@@ -1,0 +1,149 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhy8wxgmmhbc1"]
+
+[ext_resource type="Script" path="res://scenes/powerup_menu.gd" id="1_2gs17"]
+[ext_resource type="FontFile" uid="uid://3hbpqdn84dg" path="res://graphics/ui/PixelifySans-VariableFont_wght.ttf" id="2_tx03o"]
+[ext_resource type="Theme" uid="uid://bsak0psengit4" path="res://graphics/ui/button.tres" id="3_j6fh5"]
+
+[sub_resource type="Animation" id="Animation_krkq4"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4gp3n"]
+_data = {
+"show": SubResource("Animation_krkq4")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_415kv"]
+font = ExtResource("2_tx03o")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3hko"]
+font = ExtResource("2_tx03o")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PowerupMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.996077)
+script = ExtResource("1_2gs17")
+
+[node name="Panel" type="Panel" parent="."]
+process_mode = 2
+self_modulate = Color(100, 100, 100, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.176619
+anchor_right = 0.703646
+anchor_bottom = 0.738656
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(312, 268)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_4gp3n")
+}
+
+[node name="LvlUp" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.5
+offset_top = 14.2796
+offset_right = 96.5
+offset_bottom = 70.2796
+grow_horizontal = 2
+text = "Level Up!"
+label_settings = SubResource("LabelSettings_415kv")
+
+[node name="Choose" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.0
+offset_top = 100.0
+offset_right = 170.0
+offset_bottom = 149.0
+grow_horizontal = 2
+text = "Choose a powerup"
+label_settings = SubResource("LabelSettings_m3hko")
+
+[node name="Buttons" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Button1" type="Button" parent="Panel/Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 200.0
+offset_right = 175.0
+offset_bottom = 269.0
+grow_horizontal = 2
+theme = ExtResource("3_j6fh5")
+text = "Attack Up"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Panel/Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 300.0
+offset_right = 175.0
+offset_bottom = 369.0
+grow_horizontal = 2
+theme = ExtResource("3_j6fh5")
+text = "Speed Up"
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="Panel/Buttons"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 400.0
+offset_right = 175.0
+offset_bottom = 469.0
+grow_horizontal = 2
+theme = ExtResource("3_j6fh5")
+text = "Attack Range Up"
+icon_alignment = 1
+
+[connection signal="pressed" from="Panel/Buttons/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Panel/Buttons/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/Buttons/Button3" to="." method="_on_button_3_pressed"]

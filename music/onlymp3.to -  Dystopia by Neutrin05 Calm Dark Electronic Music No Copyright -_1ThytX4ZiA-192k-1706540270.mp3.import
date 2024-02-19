@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bgnmroa8lo0ct"
+path="res://.godot/imported/onlymp3.to -  Dystopia by Neutrin05 Calm Dark Electronic Music No Copyright -_1ThytX4ZiA-192k-1706540270.mp3-3df0720c609849e0994135f27709de9b.mp3str"
+
+[deps]
+
+source_file="res://music/onlymp3.to -  Dystopia by Neutrin05 Calm Dark Electronic Music No Copyright -_1ThytX4ZiA-192k-1706540270.mp3"
+dest_files=["res://.godot/imported/onlymp3.to -  Dystopia by Neutrin05 Calm Dark Electronic Music No Copyright -_1ThytX4ZiA-192k-1706540270.mp3-3df0720c609849e0994135f27709de9b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

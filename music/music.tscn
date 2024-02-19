@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://be2rsdj44tvw5"]
+
+[ext_resource type="AudioStream" uid="uid://bgnmroa8lo0ct" path="res://music/onlymp3.to -  Dystopia by Neutrin05 Calm Dark Electronic Music No Copyright -_1ThytX4ZiA-192k-1706540270.mp3" id="1_rgg56"]
+
+[node name="Music" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_rgg56")
+volume_db = -10.0
+autoplay = true

@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://clyhd6sbevd6j"]
+
+[ext_resource type="Script" path="res://scenes/bat.gd" id="1_ddtfc"]
+[ext_resource type="Texture2D" uid="uid://b1ygnkhp0bnj8" path="res://graphics/enemies/PlagueBat.png" id="1_tch2v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdhlq"]
+atlas = ExtResource("1_tch2v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2cg4"]
+atlas = ExtResource("1_tch2v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqfvr"]
+atlas = ExtResource("1_tch2v")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdebc"]
+atlas = ExtResource("1_tch2v")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlonu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdhlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2cg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdebc")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwwei"]
+radius = 5.0
+
+[node name="Bat" type="CharacterBody2D" groups=["enemies"]]
+process_mode = 1
+collision_layer = 2
+collision_mask = 11
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_ddtfc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_dlonu")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.566883
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gwwei")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 4
+path_postprocessing = 1
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

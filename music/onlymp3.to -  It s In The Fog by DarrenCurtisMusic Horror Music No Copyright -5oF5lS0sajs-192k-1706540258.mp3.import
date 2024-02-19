@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://imxvmedjanjj"
+path="res://.godot/imported/onlymp3.to -  It s In The Fog by DarrenCurtisMusic Horror Music No Copyright -5oF5lS0sajs-192k-1706540258.mp3-f4955c72ad271fe368693c036c58ae5f.mp3str"
+
+[deps]
+
+source_file="res://music/onlymp3.to -  It s In The Fog by DarrenCurtisMusic Horror Music No Copyright -5oF5lS0sajs-192k-1706540258.mp3"
+dest_files=["res://.godot/imported/onlymp3.to -  It s In The Fog by DarrenCurtisMusic Horror Music No Copyright -5oF5lS0sajs-192k-1706540258.mp3-f4955c72ad271fe368693c036c58ae5f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

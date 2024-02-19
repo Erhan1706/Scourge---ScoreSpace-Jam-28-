@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfwlcjw4247oj"]
+
+[ext_resource type="Script" path="res://scenes/main_screen.gd" id="1_hi50l"]
+[ext_resource type="PackedScene" uid="uid://co4brksgir0n" path="res://map/Ambient.tscn" id="1_o3gyn"]
+[ext_resource type="Theme" uid="uid://bsak0psengit4" path="res://graphics/ui/button.tres" id="2_qq8am"]
+[ext_resource type="FontFile" uid="uid://18poirx0l4c8" path="res://graphics/ui/Dokdo-Regular.ttf" id="4_uf21u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b5qx5"]
+line_spacing = 5.0
+font = ExtResource("4_uf21u")
+font_size = 120
+
+[sub_resource type="Animation" id="Animation_gjq2l"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ylr4d"]
+_data = {
+"transition": SubResource("Animation_gjq2l")
+}
+
+[node name="MainScreen" type="CanvasLayer"]
+script = ExtResource("1_hi50l")
+
+[node name="Map" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node2D" parent="Map" instance=ExtResource("1_o3gyn")]
+modulate = Color(1, 1, 1, 0.533333)
+position = Vector2(653, -156)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.64
+anchor_right = 0.5
+anchor_bottom = 0.64
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -20.72
+offset_right = 114.0
+offset_bottom = 25.28
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_qq8am")
+text = "Quit
+"
+
+[node name="PlayButton" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -103.0
+offset_top = -91.72
+offset_right = 114.0
+offset_bottom = -45.72
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_qq8am")
+text = "Play
+"
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.409
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = -175.0
+offset_top = -57.0
+offset_right = 211.0
+offset_bottom = 64.0
+text = "Scourge"
+label_settings = SubResource("LabelSettings_b5qx5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ylr4d")
+}
+
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
